@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>لعبة العد التنازلي</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, orientation=landscape">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo-right">
+                <img src="uni_logo.png" alt="University Logo">
+            </div>
+            <div class="logo-left">
+                <img src="TechHublogo.png" alt="TechHub Logo">
+            </div>
+        </header>
+
+        <div id="hearts" class="hearts">❤️❤️❤️</div>
+
+        <div id="rotateMessage" class="rotate-message">الرجاء تدوير جهازك إلى الوضع الأفقي ⬅️➡️</div>
+
+        <main>
+            <section class="screen active" id="screen1">
+                <button class="btn" onclick="goToScreen('screen2')">كيفية اللعب</button>
+                <button class="start-button" onclick="startGame()">ابدأ العد</button>
+            </section>
+
+            <section class="screen" id="screen2">
+                <h2>كيفية اللعب</h2>
+                <div class="instructions-box">
+                    <ul>
+                        <li>اضغط على زر بدء العد</li>
+                        <li>مباشرة عند الضغط سوف يبدأ عد تصاعدي (60 ثانية) من دون أن يظهر الوقت</li>
+                        <li>حاول ضغط زر الانتهاء عند الظن أن الوقت بالظبط 00:60</li>
+                        <li>خلال الدقيقة سوف تظهر تحديات لتشتيتك، يجب أن تقوم بها</li>
+                    </ul>
+                </div>
+                <button class="btn" onclick="goToScreen('screen1')">رجوع</button>
+            </section>
+
+            <section class="screen" id="countdownScreen">
+                <div class="countdown-box">
+                    <h1 id="countdownNumber">3</h1>
+                </div>
+            </section>
+
+            <section class="screen" id="popupScreen">
+                <div id="popupMessage" class="popup-message"></div>
+            </section>
+
+            <section class="screen" id="game1">
+                <div class="emoji-container">
+                    <h2>احفظ ترتيب الرموز !</h2>
+                    <div id="emojiBox" class="emoji-box"></div>
+                    <div id="dropBox" class="emoji-box"></div>
+                </div>
+            </section>
+
+            <section class="screen" id="game2">
+                <h2>اضغط البطارية قبل أن تفرغ🔋</h2>
+                <div id="batteryContainer">
+                    <div id="battery" class="battery">
+                        <div id="batteryLevel" class="battery-level"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="screen" id="game3">
+                <h2>اسحب البريد المزعج لليسار ✉️</h2>
+                <div id="emails" class="emails"></div>
+            </section>
+
+            <section class="screen" id="game4">
+                <h2>اختر كلمة المرور الأقوى 🔑</h2>
+                <div class="password-options">
+                    <button class="btn" onclick="checkPassword('weak')">1234</button>
+                    <button class="btn" onclick="checkPassword('medium')">password</button>
+                    <button class="btn" onclick="checkPassword('strong')">G$9r!x8</button>
+                </div>
+            </section>
+
+            <section class="screen" id="game5">
+                <h2>التقط الرموز التقنية فقط</h2>
+                <div id="catchArea" class="catch-area"></div>
+            </section>
+
+            <section class="screen" id="screen6">
+                <h2>استمر بالعد ⏳</h2>
+                <p>عندما تعتقد أن ٦٠ ثانية مرت، اضغط زر "إيقاف الوقت".</p>
+            </section>
+
+            <section class="screen" id="screen7">
+                <div class="result-box">
+                    <p id="final-time"></p>
+                    <p id="time-diff"></p>
+                    <p id="time-feedback"></p>
+                </div>
+                <button class="btn" onclick="restartGame()">إعادة اللعب</button>
+            </section>
+        </main>
+
+        <button id="stopBtn" class="btn stop" onclick="stopTimer()">إيقاف الوقت</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

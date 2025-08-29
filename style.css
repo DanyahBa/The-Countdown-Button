@@ -1,0 +1,437 @@
+body {
+    margin: 0;
+    font-family: 'Tajawal', sans-serif;
+    color: #fff;
+    background: #b9d4ef;
+    text-align: center;
+    overflow: hidden;
+}
+
+.container {
+    width: 1150px;
+    height: 93vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background: rgb(29, 138, 145);
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+/* ===== Header logos ===== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 40px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1000;
+}
+
+.logo-left img,
+.logo-right img {
+    height: 115px;
+}
+
+.logo-left img {
+    margin-left: 0;
+}
+
+.logo-right img {
+    margin-right: 0;
+}
+
+/* ===== Hearts ===== */
+.hearts {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    z-index: 100;
+    display: none;
+}
+
+#screen1 .hearts,
+#screen2 .hearts {
+    display: none;
+}
+
+/* ===== Screens ===== */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background: url("Background_image.png") no-repeat center center / cover;
+}
+
+.screen.active {
+    display: flex;
+}
+
+#screen1 {
+    background: url("The_Countdown_Button.png") no-repeat center center / cover;
+}
+
+/* ===== Buttons ===== */
+#screen1 .btn:first-of-type {
+    background: rgba(91, 170, 183, 0.9);
+    color: white;
+    border-radius: 30px;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, background 0.2s ease;
+    margin-top: 410px;
+    margin-bottom: 20px;
+}
+
+.start-button {
+    width: 350px;
+    height: 90px;
+    border-radius: 50px;
+    border: none;
+    font-size: 28px;
+    font-weight: bold;
+    color: #2ca4b0;
+    font-family: 'Tajawal', sans-serif;
+    background: linear-gradient(145deg, #f5f5f5, #d6d6d6);
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.3), -2px -2px 20px rgba(255,255,255,0.8), inset -0.5px -0.5px 1px rgba(255,255,255,0.7), inset 4px 4px 6px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.start-button:hover {
+    transform: scale(1.05);
+}
+
+.btn {
+    margin: 15px auto;
+    padding: 12px 25px;
+    background: rgba(91, 170, 183, 0.9);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    min-width: 150px;
+    font-family: 'Tajawal', sans-serif;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover {
+    background: #71ced7;
+    transform: scale(1.05);
+}
+
+.btn.stop {
+    background: #e63946;
+    border-radius: 30px;
+}
+
+.btn.stop:hover {
+    background: #ff4b5c;
+}
+
+/* ===== Instructions ===== */
+.instructions-box {
+    background: rgba(91, 170, 183, 0.9);
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: right;
+    font-size: 1.2rem;
+}
+
+.instructions-box ul {
+    padding-left: 20px;
+}
+
+.instructions-box li {
+    margin-bottom: 5px;
+}
+
+/* ===== Countdown ===== */
+.countdown-box {
+    font-size: 10vw;
+    font-weight: bold;
+    color: #fff;
+    background: rgba(0,0,0,0.4);
+    padding: 5vw 10vw;
+    border-radius: 20px;
+    animation: zoom 1s infinite;
+}
+
+@keyframes zoom {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* ===== Popup Screen ===== */
+#popupScreen {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: url("Background_image.png") no-repeat center center / cover;
+    flex-direction: column;
+    z-index: 500;
+}
+
+#popupScreen.active {
+    display: flex;
+}
+
+.popup-message {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #fff;
+    opacity: 0;
+    transform: scale(0.5);
+    animation: none;
+    pointer-events: none;
+    text-align: center;
+}
+
+@keyframes popupZoom {
+    0% { transform: scale(0.5); opacity: 0; }
+    30% { transform: scale(1.2); opacity: 1; }
+    70% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0; }
+}
+
+/* ===== Emoji Game ===== */
+.emoji-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.emoji-box,
+#dropBox {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 5vw;
+}
+
+.emoji-slot {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 5px;
+}
+
+.draggable-emoji {
+    font-size: 30px;
+    cursor: grab;
+    margin: 5px;
+}
+
+/* ===== Headings & Text ===== */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+p {
+    font-size: 1.2rem;
+    max-width: 80%;
+    text-align: center;
+}
+
+/* ===== Battery Game ===== */
+.battery {
+    cursor: pointer;
+    width: 80px;
+    height: 150px;
+    border: 4px solid #fff;
+    border-radius: 6px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.battery-level {
+    width: 100%;
+    height: 30%;
+    background: red;
+    position: absolute;
+    bottom: 0;
+    transition: height 0.2s, background 0.2s;
+}
+
+/* ===== Spam Emails ===== */
+.emails {
+    position: relative;
+    width: 80%;
+    height: 60%;
+    margin: 0 auto;
+    overflow: hidden;
+    touch-action: none; /* Prevent screen moving during swipe */
+}
+
+.email-card {
+    position: absolute;
+    background: white;
+    color: black;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    user-select: none;
+}
+
+/* ===== Password Game ===== */
+.password-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ===== Catch Game ===== */
+.catch-area {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    height: 40vh;
+    border: 2px solid #fff;
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+/* ===== Results ===== */
+.result-box {
+    background: rgba(91, 170, 183, 0.9);
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* ===== Stop Button ===== */
+#stopBtn {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    font-size: 1rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .countdown-box {
+        font-size: 15vw;
+        padding: 8vw 15vw;
+    }
+
+    .btn {
+        font-size: 1rem;
+        min-width: 120px;
+    }
+
+    .emoji-box,
+    #dropBox {
+        font-size: 8vw;
+        gap: 10px;
+    }
+
+    .emoji-slot {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .battery {
+        width: 60px;
+        height: 120px;
+    }
+
+    .catch-area {
+        height: 35vh;
+    }
+}
+
+.rotate-message {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("Background_image.png") no-repeat center center / cover;
+    color: #fff;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 9999;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+/* ===== Force Landscape Mode ===== */
+@media screen and (orientation:portrait) {
+    body {
+        transform: rotate(90deg);
+        transform-origin: left top;
+        width: 100vh;
+        height: 100vw;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
