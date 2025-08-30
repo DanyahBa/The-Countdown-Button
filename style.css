@@ -189,13 +189,6 @@ body {
     100% { transform: scale(1); }
 }
 
-/* Responsive for smaller screens */
-@media (max-width: 768px) {
-    #countdownNumber {
-        font-size: 15vw;
-    }
-}
-
 /* ===== Popup Screen ===== */
 #popupScreen {
     display: none;
