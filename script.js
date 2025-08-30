@@ -364,42 +364,44 @@ function startCatchGame() {
     let emojis = ["💻", "📱", "🤖", "🕹️", "🐱", "🍕", "🕶️", "🎈"];
     let count = 0, target = 6;
 
-    let interval = setInterval(() => {
-        let span = document.createElement("span");
-        span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-        span.style.position = "absolute";
-        span.style.left = Math.random() * 90 + "%";
-        span.style.top = "0";
-        span.style.fontSize = "30px";
-        span.style.cursor = "pointer";
-        area.appendChild(span);
+    setTimeout(() => {
+        let interval = setInterval(() => {
+            let span = document.createElement("span");
+            span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            span.style.position = "absolute";
+            span.style.left = Math.random() * 90 + "%";
+            span.style.top = "0";
+            span.style.fontSize = "30px";
+            span.style.cursor = "pointer";
+            area.appendChild(span);
 
-        let fall = setInterval(() => {
-            let top = parseInt(span.style.top);
-            span.style.top = (top + 5) + "px";
-            if (top > 350) {
-                span.remove();
-                clearInterval(fall);
-            }
-        }, 100);
-        activeIntervals.push(fall);
-
-        span.onclick = () => {
-            if (["💻","📱","🤖","🕹️"].includes(span.textContent)) {
-                count++;
-                span.remove();
-                if (count >= target) {
-                    clearAllIntervals();
-                    goToNextGame();
+            let fall = setInterval(() => {
+                let top = parseInt(span.style.top);
+                span.style.top = (top + 5) + "px";
+                if (top > 350) {
+                    span.remove();
+                    clearInterval(fall);
                 }
-            } else {
-                clearAllIntervals();
-                loseHeart();
-            }
-        };
+            }, 100);
+            activeIntervals.push(fall);
 
-    }, 800);
-    activeIntervals.push(interval);
+            span.onclick = () => {
+                if (["💻","📱","🤖","🕹️"].includes(span.textContent)) {
+                    count++;
+                    span.remove();
+                    if (count >= target) {
+                        clearAllIntervals();
+                        goToNextGame();
+                    }
+                } else {
+                    clearAllIntervals();
+                    loseHeart();
+                }
+            };
+
+        }, 800);
+        activeIntervals.push(interval);
+    }, 1400);
 }
 
 /* ===== Results ===== */
