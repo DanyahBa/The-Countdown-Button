@@ -2,7 +2,7 @@ body {
     margin: 0;
     font-family: 'Tajawal', sans-serif;
     color: #fff;
-    background: #b9d4ef;
+    background: #cee7ff;
     text-align: center;
     overflow: hidden;
 }
@@ -39,7 +39,7 @@ body {
 
 .logo-left img,
 .logo-right img {
-    height: 115px;
+    height: 120px;
 }
 
 .logo-left img {
@@ -114,7 +114,7 @@ body {
     color: #2ca4b0;
     font-family: 'Tajawal', sans-serif;
     background: linear-gradient(145deg, #f5f5f5, #d6d6d6);
-    box-shadow: 8px 8px 20px rgba(0,0,0,0.3), -2px -2px 20px rgba(255,255,255,0.8), inset -0.5px -0.5px 1px rgba(255,255,255,0.7), inset 4px 4px 6px rgba(0,0,0,0.15);
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.3), -8px -8px 20px rgba(255,255,255,0.8), inset -4px -4px 6px rgba(255,255,255,0.7), inset 4px 4px 6px rgba(0,0,0,0.15);
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
