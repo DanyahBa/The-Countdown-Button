@@ -106,5 +106,15 @@
     </div>
 
     <script src="script.js"></script>
+
+    <!-- Hidden form to send results -->
+<form id="resultForm" action="https://script.google.com/macros/s/AKfycbyPFTM7JjrmAKzsuOp6fvQJngI47T92w_I8sn8YI1j6GILaVsYk3Igmaydu_lFg2lyo/exec" method="POST" target="hidden_iframe">
+  <input type="hidden" name="player" id="playerInput">
+  <input type="hidden" name="timeDiff" id="timeDiffInput">
+  <input type="hidden" name="timeFeedback" id="feedbackInput">
+  <input type="hidden" name="result" id="resultInput">
+</form>
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
 </body>
 </html>

@@ -1,4 +1,3 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyOJ97Pv-vbfkqEDxHkRs-zQfqamV2y4eN_Wf_m_ka7Vkn7f35PES_yp3eI-MZgUmZq/exec"; 
 // Get last player number from localStorage
 let lastPlayerNum = parseInt(localStorage.getItem("lastPlayerNum")) || 0;
 
@@ -10,18 +9,14 @@ localStorage.setItem("lastPlayerNum", lastPlayerNum);
 let playerName = `Player${lastPlayerNum}`;
 console.log("Current player:", playerName);
 
-function sendResultToSheet(player, timeDiff, timeFeedback, result) {
-    const data = { player, timeDiff, timeFeedback, result };
-    fetch(WEB_APP_URL, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" }
-    })
-    .then(res => res.text())
-    .then(txt => console.log("Data sent:", txt))
-    .catch(err => console.error("Error sending data:", err));
+function sendResultToSheet(player, timeDiff, feedback, result) {
+  document.getElementById("playerInput").value = player;
+  document.getElementById("timeDiffInput").value = timeDiff;
+  document.getElementById("feedbackInput").value = feedback;
+  document.getElementById("resultInput").value = result;
+  document.getElementById("resultForm").submit();
+  console.log("Data sent via form POST");
 }
-
 
 let timerStart, timerEnd;
 let hearts = 3;
@@ -442,6 +437,7 @@ function stopTimer() {
     elapsed,
     feedback,
     diff <= 5 ? "Win" : "Lose"
+
 );
 
 }
