@@ -174,20 +174,26 @@ body {
 }
 
 /* ===== Countdown ===== */
-.countdown-box {
+#countdownNumber {
     font-size: 10vw;
     font-weight: bold;
     color: #fff;
-    background: rgba(0,0,0,0.4);
-    padding: 5vw 10vw;
-    border-radius: 20px;
+    text-align: center;
     animation: zoom 1s infinite;
 }
 
+/* Zoom animation */
 @keyframes zoom {
     0% { transform: scale(1); }
     50% { transform: scale(1.3); }
     100% { transform: scale(1); }
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+    #countdownNumber {
+        font-size: 15vw;
+    }
 }
 
 /* ===== Popup Screen ===== */
