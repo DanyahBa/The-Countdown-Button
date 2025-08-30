@@ -1,13 +1,4 @@
-async function getPlayerNumber() {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbyvxKuVPfAydGyqMXfHUz7EuLxLik5OuPVVLlJBAf2xN0LbVWZGLR5K7TWqpimfp6iA/exec");
-    const lastRow = await response.text(); // returns the total rows
-    let lastPlayerNum = parseInt(lastRow) || 0;
-    lastPlayerNum++; // increment for new player
-    return `Player${lastPlayerNum}`;
-}
-
-function sendResultToSheet(player, timeDiff, feedback, result) {
-  document.getElementById("playerInput").value = player;
+function sendResultToSheet(timeDiff, feedback, result) {
   document.getElementById("timeDiffInput").value = timeDiff;
   document.getElementById("feedbackInput").value = feedback;
   document.getElementById("resultInput").value = result;
@@ -37,9 +28,6 @@ function goToScreen(id) {
 }
 
 async function startGame() {
-    playerName = await getPlayerNumber();
-    console.log("Current player:", playerName);
-
     timerStart = new Date();
     hearts = 3;
     document.getElementById("hearts").textContent = "❤️❤️❤️";
@@ -433,7 +421,6 @@ function stopTimer() {
     goToScreen("screen7");
 
     sendResultToSheet(
-    playerName,
     elapsed,
     feedback,
     diff <= 5 ? "Win" : "Lose"
