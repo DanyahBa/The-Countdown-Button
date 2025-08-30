@@ -1,13 +1,10 @@
-// Get last player number from localStorage
-let lastPlayerNum = parseInt(localStorage.getItem("lastPlayerNum")) || 0;
-
-// Increment for the new player
-lastPlayerNum++;
-localStorage.setItem("lastPlayerNum", lastPlayerNum);
-
-// Set player name automatically
-let playerName = `Player${lastPlayerNum}`;
-console.log("Current player:", playerName);
+async function getPlayerNumber() {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbyvxKuVPfAydGyqMXfHUz7EuLxLik5OuPVVLlJBAf2xN0LbVWZGLR5K7TWqpimfp6iA/exec");
+    const lastRow = await response.text(); // returns the total rows
+    let lastPlayerNum = parseInt(lastRow) || 0;
+    lastPlayerNum++; // increment for new player
+    return `Player${lastPlayerNum}`;
+}
 
 function sendResultToSheet(player, timeDiff, feedback, result) {
   document.getElementById("playerInput").value = player;
@@ -39,7 +36,10 @@ function goToScreen(id) {
     document.getElementById("stopBtn").style.display = (id.startsWith("game") || id === "screen6") ? "block" : "none";
 }
 
-function startGame() {
+async function startGame() {
+    playerName = await getPlayerNumber();
+    console.log("Current player:", playerName);
+
     timerStart = new Date();
     hearts = 3;
     document.getElementById("hearts").textContent = "❤️❤️❤️";
